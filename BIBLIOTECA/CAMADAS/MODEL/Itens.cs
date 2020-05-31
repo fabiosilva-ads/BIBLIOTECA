@@ -11,6 +11,6 @@ namespace BIBLIOTECA.CAMADAS.MODEL
         public int id { get; set; }
         public int emprestimoID { get; set; }
         public int livroID { get; set; }
-        public string entrega { get; set; }
+        public DateTime entrega { get; set; }
     }
 }
