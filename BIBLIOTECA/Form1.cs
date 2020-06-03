@@ -20,7 +20,42 @@ namespace BIBLIOTECA
         private void Form1_Load(object sender, EventArgs e)
         {
             CAMADAS.DAL.Clientes dalCli = new CAMADAS.DAL.Clientes();
-            dataGridView1.DataSource = dalCli.Select();
+            dtGrvClientes.DataSource = dalCli.Select();
+        }
+
+        private void btnInserir_Click(object sender, EventArgs e)
+        {
+            CAMADAS.MODEL.Clientes cliente = new CAMADAS.MODEL.Clientes();
+            cliente.nome = txtNome.Text;
+            cliente.curso = txtCurso.Text;
+            cliente.dias = Convert.ToInt32(txtDias.Text);
+            cliente.multa = Convert.ToSingle(txtMulta.Text);
+
+            CAMADAS.DAL.Clientes dalCli = new CAMADAS.DAL.Clientes();
+            dalCli.Insert(cliente);
+
+            dtGrvClientes.DataSource = "";
+            dtGrvClientes.DataSource = dalCli.Select();
+
+        }
+
+
+
+        private void btnSair_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void btnRemover_Click(object sender, EventArgs e)
+        {
+            int idCli = Convert.ToInt32(txtID.Text);
+
+            CAMADAS.DAL.Clientes dalCli = new CAMADAS.DAL.Clientes();
+            dalCli.Delete(idCli);
+
+            dtGrvClientes.DataSource = "";
+            dtGrvClientes.DataSource = dalCli.Select();
+
         }
     }
 }

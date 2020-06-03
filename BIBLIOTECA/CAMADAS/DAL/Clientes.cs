@@ -5,6 +5,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Runtime.InteropServices;
 
 namespace BIBLIOTECA.CAMADAS.DAL
 {
@@ -18,6 +19,7 @@ namespace BIBLIOTECA.CAMADAS.DAL
             SqlConnection conexao = new SqlConnection(strCon);
             string sql = "SELECT * FROM Clientes;";
             SqlCommand cmd = new SqlCommand(sql, conexao);
+
             try
             {
                 conexao.Open();
@@ -52,6 +54,7 @@ namespace BIBLIOTECA.CAMADAS.DAL
             string sql = "SELECT * FROM Clientes WHERE id=@id;";
             SqlCommand cmd = new SqlCommand(sql, conexao);
             cmd.Parameters.AddWithValue("@id", id);
+
             try
             {
                 conexao.Open();
@@ -76,6 +79,79 @@ namespace BIBLIOTECA.CAMADAS.DAL
 
             }
             return cliente;
+        }
+        public void Insert(MODEL.Clientes cliente)
+        {
+            SqlConnection conexao = new SqlConnection(strCon);
+            string sql = "INSERT INTO Clientes VALUES (@nome, @curso, @dias, @multa);";
+            SqlCommand cmd = new SqlCommand(sql, conexao);
+            cmd.Parameters.AddWithValue("@nome", cliente.nome);
+            cmd.Parameters.AddWithValue("@curso", cliente.curso);
+            cmd.Parameters.AddWithValue("@dias", cliente.dias);
+            cmd.Parameters.AddWithValue("@multa", cliente.multa);
+
+            try
+            {
+                conexao.Open();
+                cmd.ExecuteNonQuery();
+
+            }
+            catch
+            {
+                Console.WriteLine("Erro na inserção de Clientes... ");
+            }
+            finally
+            {
+                conexao.Close();
+            }
+        }
+        public void Update(MODEL.Clientes cliente)
+        {
+            SqlConnection conexao = new SqlConnection(strCon);
+            string sql = "UPDATE Clientes SET nome=@nome, curso=@curso, dias=@dias, multa=@multa;";
+            SqlCommand cmd = new SqlCommand(sql, conexao);
+            cmd.Parameters.AddWithValue("@id", cliente.id);
+            cmd.Parameters.AddWithValue("@nome", cliente.nome);
+            cmd.Parameters.AddWithValue("@curso", cliente.curso);
+            cmd.Parameters.AddWithValue("@dias", cliente.dias);
+            cmd.Parameters.AddWithValue("@multa", cliente.multa);
+
+            try
+            {
+                conexao.Open();
+                cmd.ExecuteNonQuery();
+
+            }
+            catch
+            {
+                Console.WriteLine("Erro na inserção de Clientes... ");
+            }
+            finally
+            {
+                conexao.Close();
+            }
+        }
+        public void Delete (int idCliente)
+        {
+            SqlConnection conexao = new SqlConnection(strCon);
+            string sql = "DELETE FROM Clientes WHERE id=@id;";
+            SqlCommand cmd = new SqlCommand(sql, conexao);
+            cmd.Parameters.AddWithValue("@id", idCliente);
+            
+            try
+            {
+                conexao.Open();
+                cmd.ExecuteNonQuery();
+
+            }
+            catch
+            {
+                Console.WriteLine("Erro na remoção de Clientes... ");
+            }
+            finally
+            {
+                conexao.Close();
+            }
         }
 
     }
