@@ -9,8 +9,7 @@ using System.Runtime.InteropServices;
 
 namespace BIBLIOTECA.CAMADAS.DAL
 {
-    public class Clientes
-    {
+    public class Clientes    {
         private string strCon = Conexao.getConexao();
 
         public List<MODEL.Clientes> Select()
@@ -34,7 +33,6 @@ namespace BIBLIOTECA.CAMADAS.DAL
                     cliente.multa = Convert.ToSingle(dados["multa"].ToString());
                     lstClientes.Add(cliente);
                 }
-
             }
             catch
             {
@@ -46,7 +44,6 @@ namespace BIBLIOTECA.CAMADAS.DAL
             }
             return lstClientes;
         }
-
         public MODEL.Clientes SelectById(int id)
         {
             MODEL.Clientes cliente = new MODEL.Clientes();
@@ -108,7 +105,7 @@ namespace BIBLIOTECA.CAMADAS.DAL
         public void Update(MODEL.Clientes cliente)
         {
             SqlConnection conexao = new SqlConnection(strCon);
-            string sql = "UPDATE Clientes SET nome=@nome, curso=@curso, dias=@dias, multa=@multa;";
+            string sql = "UPDATE Clientes SET nome=@nome, curso=@curso, dias=@dias, multa=@multa WHERE id=@id;";
             SqlCommand cmd = new SqlCommand(sql, conexao);
             cmd.Parameters.AddWithValue("@id", cliente.id);
             cmd.Parameters.AddWithValue("@nome", cliente.nome);
@@ -124,14 +121,14 @@ namespace BIBLIOTECA.CAMADAS.DAL
             }
             catch
             {
-                Console.WriteLine("Erro na inserção de Clientes... ");
+                Console.WriteLine("Erro na atualização de Clientes... ");
             }
             finally
             {
                 conexao.Close();
             }
         }
-        public void Delete (int idCliente)
+        public void Delete(int idCliente)
         {
             SqlConnection conexao = new SqlConnection(strCon);
             string sql = "DELETE FROM Clientes WHERE id=@id;";

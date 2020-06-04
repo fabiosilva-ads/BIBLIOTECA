@@ -36,10 +36,7 @@ namespace BIBLIOTECA
 
             dtGrvClientes.DataSource = "";
             dtGrvClientes.DataSource = dalCli.Select();
-
         }
-
-
 
         private void btnSair_Click(object sender, EventArgs e)
         {
@@ -55,7 +52,22 @@ namespace BIBLIOTECA
 
             dtGrvClientes.DataSource = "";
             dtGrvClientes.DataSource = dalCli.Select();
+        }
 
+        private void btnEditar_Click(object sender, EventArgs e)
+        {
+            CAMADAS.MODEL.Clientes cliente = new CAMADAS.MODEL.Clientes();
+            cliente.id = Convert.ToInt32(txtID.Text);
+            cliente.nome = txtNome.Text;
+            cliente.curso = txtCurso.Text;
+            cliente.dias = Convert.ToInt32(txtDias.Text);
+            cliente.multa = Convert.ToSingle(txtMulta.Text);
+
+            CAMADAS.DAL.Clientes dalCli = new CAMADAS.DAL.Clientes();
+            dalCli.Update(cliente);
+
+            dtGrvClientes.DataSource = "";
+            dtGrvClientes.DataSource = dalCli.Select();
         }
     }
 }

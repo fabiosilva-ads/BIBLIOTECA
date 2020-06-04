@@ -68,7 +68,7 @@
             this.txtNome.Location = new System.Drawing.Point(212, 48);
             this.txtNome.Name = "txtNome";
             this.txtNome.Size = new System.Drawing.Size(282, 29);
-            this.txtNome.TabIndex = 2;
+            this.txtNome.TabIndex = 2;            
             // 
             // txtCurso
             // 
@@ -164,6 +164,7 @@
             this.btnEditar.TabIndex = 12;
             this.btnEditar.Text = "&Editar";
             this.btnEditar.UseVisualStyleBackColor = true;
+            this.btnEditar.Click += new System.EventHandler(this.btnEditar_Click);
             // 
             // btnRemover
             // 
