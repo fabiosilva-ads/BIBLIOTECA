@@ -1,6 +1,6 @@
 ﻿namespace BIBLIOTECA
 {
-    partial class Form1
+    partial class frmClientes
     {
         /// <summary>
         /// Variável de designer necessária.

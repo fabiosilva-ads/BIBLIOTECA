@@ -41,7 +41,7 @@ namespace BIBLIOTECA.CAMADAS.BLL
             DAL.Livros dalLivro = new DAL.Livros();
             // verificações e regras de negócios
             if (livro.autor != string.Empty)
-            dalLivro.Insert(livro);
+            dalLivro.Update(livro);
         }
 
         public void Delete(int idLivro)
