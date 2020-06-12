@@ -102,6 +102,7 @@
             this.empréstimoToolStripMenuItem.Name = "empréstimoToolStripMenuItem";
             this.empréstimoToolStripMenuItem.Size = new System.Drawing.Size(184, 30);
             this.empréstimoToolStripMenuItem.Text = "Empréstimo";
+            this.empréstimoToolStripMenuItem.Click += new System.EventHandler(this.empréstimoToolStripMenuItem_Click);
             // 
             // devoluçãoToolStripMenuItem
             // 

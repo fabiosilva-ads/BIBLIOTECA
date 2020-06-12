@@ -46,9 +46,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CAMADAS\BLL\Emprestimo.cs" />
     <Compile Include="CAMADAS\BLL\Livros.cs" />
     <Compile Include="CAMADAS\DAL\Clientes.cs" />
     <Compile Include="CAMADAS\DAL\Conexao.cs" />
+    <Compile Include="CAMADAS\DAL\Emprestimo.cs" />
     <Compile Include="CAMADAS\DAL\Livros.cs" />
     <Compile Include="CAMADAS\MODEL\Emprestimo.cs" />
     <Compile Include="CAMADAS\MODEL\Itens.cs" />
@@ -59,6 +61,12 @@
     </Compile>
     <Compile Include="frmClientes.Designer.cs">
       <DependentUpon>frmClientes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmEmprestimo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmEmprestimo.Designer.cs">
+      <DependentUpon>frmEmprestimo.cs</DependentUpon>
     </Compile>
     <Compile Include="frmLivros.cs">
       <SubType>Form</SubType>
@@ -82,6 +90,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="frmClientes.resx">
       <DependentUpon>frmClientes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmEmprestimo.resx">
+      <DependentUpon>frmEmprestimo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmLivros.resx">
       <DependentUpon>frmLivros.cs</DependentUpon>
