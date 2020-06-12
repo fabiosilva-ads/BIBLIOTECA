@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace BIBLIOTECA.CAMADAS.DAL
 {
-    class Emprestimo
+    public class Emprestimo
     {
         private string strCon = CAMADAS.DAL.Conexao.getConexao();
 

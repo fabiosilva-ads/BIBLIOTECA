@@ -47,10 +47,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CAMADAS\BLL\Emprestimo.cs" />
+    <Compile Include="CAMADAS\BLL\Itens.cs" />
     <Compile Include="CAMADAS\BLL\Livros.cs" />
     <Compile Include="CAMADAS\DAL\Clientes.cs" />
     <Compile Include="CAMADAS\DAL\Conexao.cs" />
     <Compile Include="CAMADAS\DAL\Emprestimo.cs" />
+    <Compile Include="CAMADAS\DAL\Itens.cs" />
     <Compile Include="CAMADAS\DAL\Livros.cs" />
     <Compile Include="CAMADAS\MODEL\Emprestimo.cs" />
     <Compile Include="CAMADAS\MODEL\Itens.cs" />
