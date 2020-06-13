@@ -43,17 +43,18 @@
             this.label3 = new System.Windows.Forms.Label();
             this.lblEmpID = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.lblItemID = new System.Windows.Forms.Label();
-            this.cmbLivro = new System.Windows.Forms.ComboBox();
-            this.txtLivroID = new System.Windows.Forms.TextBox();
-            this.dtpEntrega = new System.Windows.Forms.DateTimePicker();
-            this.btnItemNovo = new System.Windows.Forms.Button();
-            this.btnItemCancelar = new System.Windows.Forms.Button();
-            this.btnItemGravar = new System.Windows.Forms.Button();
             this.dgvItens = new System.Windows.Forms.DataGridView();
+            this.btnItemGravar = new System.Windows.Forms.Button();
+            this.btnItemCancelar = new System.Windows.Forms.Button();
+            this.btnItemNovo = new System.Windows.Forms.Button();
+            this.dtpEntrega = new System.Windows.Forms.DateTimePicker();
+            this.txtLivroID = new System.Windows.Forms.TextBox();
+            this.cmbLivro = new System.Windows.Forms.ComboBox();
+            this.lblItemID = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.btnDevolver = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -90,6 +91,7 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.splitContainer1.Panel2.Controls.Add(this.btnDevolver);
             this.splitContainer1.Panel2.Controls.Add(this.dgvItens);
             this.splitContainer1.Panel2.Controls.Add(this.btnItemGravar);
             this.splitContainer1.Panel2.Controls.Add(this.btnItemCancelar);
@@ -246,25 +248,83 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Empréstimo ID:";
             // 
-            // label2
+            // dgvItens
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(78, 45);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(72, 24);
-            this.label2.TabIndex = 0;
-            this.label2.Text = "Item ID:";
+            this.dgvItens.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvItens.Location = new System.Drawing.Point(477, 21);
+            this.dgvItens.Name = "dgvItens";
+            this.dgvItens.Size = new System.Drawing.Size(444, 247);
+            this.dgvItens.TabIndex = 10;
+            this.dgvItens.DoubleClick += new System.EventHandler(this.dgvItens_DoubleClick);
             // 
-            // label5
+            // btnItemGravar
             // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(95, 94);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(55, 24);
-            this.label5.TabIndex = 1;
-            this.label5.Text = "Livro:";
+            this.btnItemGravar.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnItemGravar.Location = new System.Drawing.Point(240, 214);
+            this.btnItemGravar.Name = "btnItemGravar";
+            this.btnItemGravar.Size = new System.Drawing.Size(106, 35);
+            this.btnItemGravar.TabIndex = 9;
+            this.btnItemGravar.Text = "&Emprestar";
+            this.btnItemGravar.UseVisualStyleBackColor = true;
+            this.btnItemGravar.Click += new System.EventHandler(this.btnItemGravar_Click);
+            // 
+            // btnItemCancelar
+            // 
+            this.btnItemCancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnItemCancelar.Location = new System.Drawing.Point(137, 214);
+            this.btnItemCancelar.Name = "btnItemCancelar";
+            this.btnItemCancelar.Size = new System.Drawing.Size(97, 35);
+            this.btnItemCancelar.TabIndex = 8;
+            this.btnItemCancelar.Text = "&Cancelar";
+            this.btnItemCancelar.UseVisualStyleBackColor = true;
+            // 
+            // btnItemNovo
+            // 
+            this.btnItemNovo.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnItemNovo.Location = new System.Drawing.Point(34, 214);
+            this.btnItemNovo.Name = "btnItemNovo";
+            this.btnItemNovo.Size = new System.Drawing.Size(97, 35);
+            this.btnItemNovo.TabIndex = 7;
+            this.btnItemNovo.Text = "&Novo";
+            this.btnItemNovo.UseVisualStyleBackColor = true;
+            this.btnItemNovo.Click += new System.EventHandler(this.btnItemNovo_Click);
+            // 
+            // dtpEntrega
+            // 
+            this.dtpEntrega.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpEntrega.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpEntrega.Location = new System.Drawing.Point(156, 129);
+            this.dtpEntrega.Name = "dtpEntrega";
+            this.dtpEntrega.Size = new System.Drawing.Size(124, 29);
+            this.dtpEntrega.TabIndex = 6;
+            // 
+            // txtLivroID
+            // 
+            this.txtLivroID.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtLivroID.Location = new System.Drawing.Point(392, 86);
+            this.txtLivroID.Name = "txtLivroID";
+            this.txtLivroID.Size = new System.Drawing.Size(69, 29);
+            this.txtLivroID.TabIndex = 5;
+            this.txtLivroID.Leave += new System.EventHandler(this.txtLivroID_Leave);
+            // 
+            // cmbLivro
+            // 
+            this.cmbLivro.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbLivro.FormattingEnabled = true;
+            this.cmbLivro.Location = new System.Drawing.Point(156, 86);
+            this.cmbLivro.Name = "cmbLivro";
+            this.cmbLivro.Size = new System.Drawing.Size(230, 32);
+            this.cmbLivro.TabIndex = 4;
+            this.cmbLivro.SelectedIndexChanged += new System.EventHandler(this.cmbLivro_SelectedIndexChanged);
+            this.cmbLivro.Leave += new System.EventHandler(this.cmbLivro_Leave);
+            // 
+            // lblItemID
+            // 
+            this.lblItemID.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblItemID.Location = new System.Drawing.Point(152, 45);
+            this.lblItemID.Name = "lblItemID";
+            this.lblItemID.Size = new System.Drawing.Size(100, 23);
+            this.lblItemID.TabIndex = 3;
             // 
             // label6
             // 
@@ -276,80 +336,36 @@
             this.label6.TabIndex = 2;
             this.label6.Text = "Entrega:";
             // 
-            // lblItemID
+            // label5
             // 
-            this.lblItemID.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblItemID.Location = new System.Drawing.Point(152, 45);
-            this.lblItemID.Name = "lblItemID";
-            this.lblItemID.Size = new System.Drawing.Size(100, 23);
-            this.lblItemID.TabIndex = 3;
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(95, 94);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(55, 24);
+            this.label5.TabIndex = 1;
+            this.label5.Text = "Livro:";
             // 
-            // cmbLivro
+            // label2
             // 
-            this.cmbLivro.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmbLivro.FormattingEnabled = true;
-            this.cmbLivro.Location = new System.Drawing.Point(156, 86);
-            this.cmbLivro.Name = "cmbLivro";
-            this.cmbLivro.Size = new System.Drawing.Size(230, 32);
-            this.cmbLivro.TabIndex = 4;
-            this.cmbLivro.SelectedIndexChanged += new System.EventHandler(this.cmbLivro_SelectedIndexChanged);
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(78, 45);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(72, 24);
+            this.label2.TabIndex = 0;
+            this.label2.Text = "Item ID:";
             // 
-            // txtLivroID
+            // btnDevolver
             // 
-            this.txtLivroID.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtLivroID.Location = new System.Drawing.Point(392, 86);
-            this.txtLivroID.Name = "txtLivroID";
-            this.txtLivroID.Size = new System.Drawing.Size(69, 29);
-            this.txtLivroID.TabIndex = 5;
-            this.txtLivroID.Leave += new System.EventHandler(this.txtLivroID_Leave);
-            // 
-            // dtpEntrega
-            // 
-            this.dtpEntrega.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtpEntrega.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpEntrega.Location = new System.Drawing.Point(156, 129);
-            this.dtpEntrega.Name = "dtpEntrega";
-            this.dtpEntrega.Size = new System.Drawing.Size(124, 29);
-            this.dtpEntrega.TabIndex = 6;
-            // 
-            // btnItemNovo
-            // 
-            this.btnItemNovo.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnItemNovo.Location = new System.Drawing.Point(68, 214);
-            this.btnItemNovo.Name = "btnItemNovo";
-            this.btnItemNovo.Size = new System.Drawing.Size(97, 35);
-            this.btnItemNovo.TabIndex = 7;
-            this.btnItemNovo.Text = "&Novo";
-            this.btnItemNovo.UseVisualStyleBackColor = true;
-            this.btnItemNovo.Click += new System.EventHandler(this.btnItemNovo_Click);
-            // 
-            // btnItemCancelar
-            // 
-            this.btnItemCancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnItemCancelar.Location = new System.Drawing.Point(192, 214);
-            this.btnItemCancelar.Name = "btnItemCancelar";
-            this.btnItemCancelar.Size = new System.Drawing.Size(97, 35);
-            this.btnItemCancelar.TabIndex = 8;
-            this.btnItemCancelar.Text = "&Cancelar";
-            this.btnItemCancelar.UseVisualStyleBackColor = true;
-            // 
-            // btnItemGravar
-            // 
-            this.btnItemGravar.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnItemGravar.Location = new System.Drawing.Point(316, 214);
-            this.btnItemGravar.Name = "btnItemGravar";
-            this.btnItemGravar.Size = new System.Drawing.Size(97, 35);
-            this.btnItemGravar.TabIndex = 9;
-            this.btnItemGravar.Text = "&Gravar";
-            this.btnItemGravar.UseVisualStyleBackColor = true;
-            // 
-            // dgvItens
-            // 
-            this.dgvItens.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvItens.Location = new System.Drawing.Point(477, 21);
-            this.dgvItens.Name = "dgvItens";
-            this.dgvItens.Size = new System.Drawing.Size(444, 247);
-            this.dgvItens.TabIndex = 10;
+            this.btnDevolver.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDevolver.Location = new System.Drawing.Point(352, 214);
+            this.btnDevolver.Name = "btnDevolver";
+            this.btnDevolver.Size = new System.Drawing.Size(106, 35);
+            this.btnDevolver.TabIndex = 11;
+            this.btnDevolver.Text = "&Devolver";
+            this.btnDevolver.UseVisualStyleBackColor = true;
+            this.btnDevolver.Click += new System.EventHandler(this.btnDevolver_Click);
             // 
             // frmEmprestimo
             // 
@@ -402,5 +418,6 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button btnDevolver;
     }
 }

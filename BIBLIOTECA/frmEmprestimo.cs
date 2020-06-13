@@ -134,12 +134,72 @@ namespace BIBLIOTECA
 
         private void verificaLivro()
         {
-            //parei aqui
+            int id = Convert.ToInt32(txtLivroID.Text);
+            CAMADAS.BLL.Livros bllLivro = new CAMADAS.BLL.Livros();
+            List<CAMADAS.MODEL.Livros> lstLivros = bllLivro.SelectByID(id);
+            if (lstLivros.Count() != 0)
+            {
+                if (lstLivros[0].situacao != 1)
+                {
+                    MessageBox.Show("Livro " + lstLivros[0].titulo.Trim() + " emprestado");
+                    cmbLivro.Focus();
+                }
+                cmbLivro.SelectedValue = id;
+            }
+            else
+            {
+                MessageBox.Show("Livro inválido!!!");
+                cmbLivro.Focus();
+            }
         }
 
         private void txtLivroID_Leave(object sender, EventArgs e)
         {
             verificaLivro();
+        }
+
+        private void cmbLivro_Leave(object sender, EventArgs e)
+        {
+            verificaLivro();
+        }
+
+        private void btnItemGravar_Click(object sender, EventArgs e)
+        {
+            CAMADAS.MODEL.Itens item = new CAMADAS.MODEL.Itens();
+            CAMADAS.BLL.Itens bllItens = new CAMADAS.BLL.Itens();
+            item.id = Convert.ToInt32(lblItemID.Text);
+            item.emprestimoID = Convert.ToInt32(lblEmpID.Text);
+            item.livroID = Convert.ToInt32(txtLivroID.Text);
+            item.entrega = Convert.ToDateTime("1/1/1900");
+
+            bllItens.Insert(item);
+            dgvItens.DataSource = bllItens.SelectByEmp(Convert.ToInt32(lblEmpID.Text));
+
+        }
+
+        private void dgvItens_DoubleClick(object sender, EventArgs e)
+        {
+            lblItemID.Text = dgvItens.SelectedRows[0].Cells["id"].Value.ToString();
+            cmbLivro.SelectedValue = dgvItens.SelectedRows[0].Cells["livroID"].Value;
+            txtLivroID.Text = dgvItens.SelectedRows[0].Cells["livroID"].Value.ToString();
+            dtpEntrega.Value = Convert.ToDateTime(dgvItens.SelectedRows[0].Cells["entrega"].Value.ToString());
+        }
+
+        private void btnDevolver_Click(object sender, EventArgs e)
+        {
+            if (lblItemID.Text != "-1" && dtpEntrega.Value == Convert.ToDateTime("1/1/1900"))
+            {
+                CAMADAS.BLL.Itens bllItens = new CAMADAS.BLL.Itens();
+                CAMADAS.MODEL.Itens item = new CAMADAS.MODEL.Itens();
+                item.id = Convert.ToInt32(lblItemID.Text);
+                item.emprestimoID = Convert.ToInt32(lblEmpID.Text);
+                item.livroID = Convert.ToInt32(txtLivroID.Text);
+
+                bllItens.Devolver(item);
+
+                dgvItens.DataSource = bllItens.SelectByEmp(item.emprestimoID);
+            }
+            else MessageBox.Show("Livro inválido ou já foi devolvido!!!");
         }
     }
 }
