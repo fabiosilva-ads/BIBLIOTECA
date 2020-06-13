@@ -27,12 +27,23 @@ namespace BIBLIOTECA
             cmbCliente.DisplayMember = "nome";
             cmbCliente.ValueMember = "id";
             cmbCliente.DataSource = dalCli.Select();
+
+            CAMADAS.DAL.Livros bllLivro = new CAMADAS.DAL.Livros();
+            cmbLivro.DisplayMember = "titulo";
+            cmbLivro.ValueMember = "id";
+            cmbLivro.DataSource = bllLivro.Select();
         }
 
         private void limparEmprestimo()
         {
             lblEmpID.Text = "-1";
             dtpData.Value = Convert.ToDateTime(DateTime.Now.ToShortDateString());
+        }
+
+        private void limparItem()
+        {
+            lblItemID.Text = "-1";
+            dtpEntrega.Value = Convert.ToDateTime("01/01/1900");
         }
 
         private void btnSair_Click(object sender, EventArgs e)
@@ -93,6 +104,42 @@ namespace BIBLIOTECA
             List<CAMADAS.MODEL.Emprestimo> lstEmp = bllEmp.Select();
             dgvEmprestimo.DataSource = "";
             dgvEmprestimo.DataSource = lstEmp;
+        }
+
+        private void dgvEmprestimo_DoubleClick(object sender, EventArgs e)
+        {
+            lblEmpID.Text = dgvEmprestimo.SelectedRows[0].Cells["id"].Value.ToString();
+            txtClienteID.Text = dgvEmprestimo.SelectedRows[0].Cells["clienteID"].Value.ToString();
+            cmbCliente.SelectedValue = dgvEmprestimo.SelectedRows[0].Cells["ClienteID"].Value;
+            dtpData.Value = Convert.ToDateTime(dgvEmprestimo.SelectedRows[0].Cells["data"].Value.ToString());
+
+            CAMADAS.BLL.Itens bllItens = new CAMADAS.BLL.Itens();
+            dgvItens.DataSource = bllItens.SelectByEmp(Convert.ToInt32(lblEmpID.Text));
+        }
+
+        private void btnItemNovo_Click(object sender, EventArgs e)
+        {
+            if (lblEmpID.Text != "-1" && lblEmpID.Text != "")
+            {
+                limparItem();
+                cmbLivro.Focus();
+            }
+            else MessageBox.Show("Não há empréstimo selecionado!!!");
+        }
+
+        private void cmbLivro_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            txtLivroID.Text = cmbLivro.SelectedValue.ToString();
+        }
+
+        private void verificaLivro()
+        {
+            //parei aqui
+        }
+
+        private void txtLivroID_Leave(object sender, EventArgs e)
+        {
+            verificaLivro();
         }
     }
 }
