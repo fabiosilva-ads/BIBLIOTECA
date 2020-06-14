@@ -122,14 +122,16 @@
             // geraisToolStripMenuItem
             // 
             this.geraisToolStripMenuItem.Name = "geraisToolStripMenuItem";
-            this.geraisToolStripMenuItem.Size = new System.Drawing.Size(168, 30);
+            this.geraisToolStripMenuItem.Size = new System.Drawing.Size(180, 30);
             this.geraisToolStripMenuItem.Text = "Gerais";
+            this.geraisToolStripMenuItem.Click += new System.EventHandler(this.geraisToolStripMenuItem_Click);
             // 
             // estatísticoToolStripMenuItem
             // 
             this.estatísticoToolStripMenuItem.Name = "estatísticoToolStripMenuItem";
-            this.estatísticoToolStripMenuItem.Size = new System.Drawing.Size(168, 30);
+            this.estatísticoToolStripMenuItem.Size = new System.Drawing.Size(180, 30);
             this.estatísticoToolStripMenuItem.Text = "Estatístico";
+            this.estatísticoToolStripMenuItem.Click += new System.EventHandler(this.estatísticoToolStripMenuItem_Click);
             // 
             // sobreToolStripMenuItem
             // 

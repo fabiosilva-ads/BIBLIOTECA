@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using BIBLIOTECA.RELATORIOS;
 
 namespace BIBLIOTECA
 {
@@ -57,6 +58,19 @@ namespace BIBLIOTECA
             frmEmprestimo frmEmp = new frmEmprestimo();
             frmEmp.MdiParent = this;
             frmEmp.Show();
+        }
+
+        private void geraisToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //chamada do relatório de livros
+            RELATORIOS.RelGerais.relLivro();
+        }
+
+        private void estatísticoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmRelEmp frmRemp = new frmRelEmp();
+            frmRemp.MdiParent = this;
+            frmRemp.Show();
         }
     }
 }

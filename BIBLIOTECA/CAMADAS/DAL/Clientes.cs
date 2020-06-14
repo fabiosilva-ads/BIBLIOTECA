@@ -12,6 +12,7 @@ namespace BIBLIOTECA.CAMADAS.DAL
     public class Clientes    {
         private string strCon = Conexao.getConexao();
 
+        //Método para recuperar dados da tabela de Clientes
         public List<MODEL.Clientes> Select()
         {
             List<MODEL.Clientes> lstClientes = new List<MODEL.Clientes>();
@@ -77,6 +78,8 @@ namespace BIBLIOTECA.CAMADAS.DAL
             }
             return cliente;
         }
+
+        //Método para inserir dados na tabela de clientes
         public void Insert(MODEL.Clientes cliente)
         {
             SqlConnection conexao = new SqlConnection(strCon);
@@ -102,6 +105,8 @@ namespace BIBLIOTECA.CAMADAS.DAL
                 conexao.Close();
             }
         }
+
+        //Método para atualizar dados na tabela de clientes
         public void Update(MODEL.Clientes cliente)
         {
             SqlConnection conexao = new SqlConnection(strCon);
@@ -128,6 +133,8 @@ namespace BIBLIOTECA.CAMADAS.DAL
                 conexao.Close();
             }
         }
+
+        //Método para remover clientes
         public void Delete(int idCliente)
         {
             SqlConnection conexao = new SqlConnection(strCon);
